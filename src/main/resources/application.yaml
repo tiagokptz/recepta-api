@@ -1,6 +1,7 @@
 spring:
   data:
     mongodb:
-      uri: mongodb://localhost:27017/recipedb
+      uri: mongodb://localhost:27017
+      database: recipesdb
   application:
     name: RecipePage
