@@ -11,7 +11,7 @@ import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.List;
 
 @Service
 public class UserService {
@@ -28,24 +28,16 @@ public class UserService {
         return true;
     }
 
-    public User login(LoginRequestDTO loginRequestDTO) throws CredentialsInvalidException {
-        User user = userRepo.findByEmail(loginRequestDTO.getEmail()).orElseThrow(() -> new CredentialsInvalidException("Invalid Credentials"));
-
-        String encodePassword = Encoder.encode(loginRequestDTO.getPassword());
-
-        if(!(user.getPassword().equals(encodePassword))) {
-            throw new CredentialsInvalidException("Invalid credentials!");
-        }
-
-        return user;
-    }
-
-    public User save(UserRequestDTO userRequestDTO) {
+    public User save(UserRequestDTO dto) {
         User user = new User();
-        user.setName(userRequestDTO.getName());
-        user.setEmail(userRequestDTO.getEmail());
-        user.setPassword(Encoder.encode(userRequestDTO.getPassword()));
+        user.setName(dto.getName());
+        user.setEmail(dto.getEmail());
+        user.setPassword(Encoder.encode(dto.getPassword()));
 
         return userRepo.save(user);
+    }
+
+    public List<User> listUsers() {
+        return userRepo.findAll();
     }
 }

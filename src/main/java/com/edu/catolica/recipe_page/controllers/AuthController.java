@@ -6,6 +6,7 @@ import com.edu.catolica.recipe_page.dto.UserRequestDTO;
 import com.edu.catolica.recipe_page.dto.UserResponseDTO;
 import com.edu.catolica.recipe_page.exceptions.CredentialsInvalidException;
 import com.edu.catolica.recipe_page.model.User;
+import com.edu.catolica.recipe_page.services.AuthService;
 import com.edu.catolica.recipe_page.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,6 +23,9 @@ public class AuthController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private AuthService authService;
+
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody UserRequestDTO userRequestDTO) {
         if(userService.findByEmail(userRequestDTO.getEmail())) {
@@ -36,7 +40,7 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<?> loginUser(@RequestBody LoginRequestDTO loginRequestDTO) {
         try {
-            User user = userService.login(loginRequestDTO);
+            User user = authService.login(loginRequestDTO);
             return ResponseEntity.ok().body(new LoginResponseDTO(user));
 
         } catch(CredentialsInvalidException e) {
