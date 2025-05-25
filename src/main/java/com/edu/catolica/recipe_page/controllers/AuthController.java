@@ -37,10 +37,10 @@ public class AuthController {
     public ResponseEntity<?> loginUser(@RequestBody LoginRequestDTO loginRequestDTO) {
         try {
             User user = userService.login(loginRequestDTO);
-            return ResponseEntity.status(HttpStatus.CREATED).body(new LoginResponseDTO(user));
+            return ResponseEntity.ok().body(new LoginResponseDTO(user));
 
         } catch(CredentialsInvalidException e) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
         }
     }
 }

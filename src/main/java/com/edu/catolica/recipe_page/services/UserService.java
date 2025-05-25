@@ -6,6 +6,7 @@ import com.edu.catolica.recipe_page.dto.UserRequestDTO;
 import com.edu.catolica.recipe_page.exceptions.CredentialsInvalidException;
 import com.edu.catolica.recipe_page.model.User;
 import com.edu.catolica.recipe_page.repositories.UserRepository;
+import com.edu.catolica.recipe_page.security.Encoder;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,15 +29,12 @@ public class UserService {
     }
 
     public User login(LoginRequestDTO loginRequestDTO) throws CredentialsInvalidException {
-        Optional<User> userOptional = userRepo.findByEmail(loginRequestDTO.getEmail());
+        User user = userRepo.findByEmail(loginRequestDTO.getEmail()).orElseThrow(() -> new CredentialsInvalidException("Invalid Credentials"));
 
-        if(userOptional.isEmpty()) {
-           throw new CredentialsInvalidException("Email invalid!");
-        }
+        String encodePassword = Encoder.encode(loginRequestDTO.getPassword());
 
-        User user = userOptional.get();
-        if(!(user.getPassword().equals(loginRequestDTO.getPassword()))) {
-            throw new CredentialsInvalidException("Password invalid!");
+        if(!(user.getPassword().equals(encodePassword))) {
+            throw new CredentialsInvalidException("Invalid credentials!");
         }
 
         return user;
@@ -46,7 +44,7 @@ public class UserService {
         User user = new User();
         user.setName(userRequestDTO.getName());
         user.setEmail(userRequestDTO.getEmail());
-        user.setPassword(userRequestDTO.getPassword());
+        user.setPassword(Encoder.encode(userRequestDTO.getPassword()));
 
         return userRepo.save(user);
     }
