@@ -1,13 +1,11 @@
-package com.edu.catolica.recipe_page.model;
+package com.edu.catolica.recipe_page.models;
 
 import com.edu.catolica.recipe_page.enums.RecipeCategory;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.List;
-import java.util.UUID;
 
 @Data
 @Document(collection = "recipes")

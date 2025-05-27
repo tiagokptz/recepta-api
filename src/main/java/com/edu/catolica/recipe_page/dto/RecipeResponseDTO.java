@@ -1,7 +1,7 @@
 package com.edu.catolica.recipe_page.dto;
 
 import com.edu.catolica.recipe_page.enums.RecipeCategory;
-import com.edu.catolica.recipe_page.model.Recipe;
+import com.edu.catolica.recipe_page.models.Recipe;
 import lombok.Data;
 
 import java.util.List;

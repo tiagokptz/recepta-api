@@ -1,4 +1,4 @@
-package com.edu.catolica.recipe_page.model;
+package com.edu.catolica.recipe_page.models;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;

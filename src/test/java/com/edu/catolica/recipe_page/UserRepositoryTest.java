@@ -1,6 +1,6 @@
 package com.edu.catolica.recipe_page;
 
-import com.edu.catolica.recipe_page.model.User;
+import com.edu.catolica.recipe_page.models.User;
 import com.edu.catolica.recipe_page.repositories.UserRepository;
 import org.bson.types.ObjectId;
 import org.junit.jupiter.api.Test;

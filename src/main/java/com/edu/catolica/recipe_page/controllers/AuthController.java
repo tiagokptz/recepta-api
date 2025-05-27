@@ -5,7 +5,7 @@ import com.edu.catolica.recipe_page.dto.LoginResponseDTO;
 import com.edu.catolica.recipe_page.dto.UserRequestDTO;
 import com.edu.catolica.recipe_page.dto.UserResponseDTO;
 import com.edu.catolica.recipe_page.exceptions.CredentialsInvalidException;
-import com.edu.catolica.recipe_page.model.User;
+import com.edu.catolica.recipe_page.models.User;
 import com.edu.catolica.recipe_page.services.AuthService;
 import com.edu.catolica.recipe_page.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

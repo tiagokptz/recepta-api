@@ -1,7 +1,7 @@
 package com.edu.catolica.recipe_page.controllers;
 
 import com.edu.catolica.recipe_page.dto.UserResponseDTO;
-import com.edu.catolica.recipe_page.model.User;
+import com.edu.catolica.recipe_page.models.User;
 import com.edu.catolica.recipe_page.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +23,8 @@ public class UserController {
     public ResponseEntity<?> listUsers() {
         List<User> users = userService.listUsers();
         List<UserResponseDTO> response = users.stream()
-                .map(UserResponseDTO::new).collect(Collectors.toList());
+                .map(UserResponseDTO :: new)
+                .collect(Collectors.toList());
 
         return ResponseEntity.ok(response);
     }

@@ -1,6 +1,6 @@
 package com.edu.catolica.recipe_page.dto;
 
-import com.edu.catolica.recipe_page.model.User;
+import com.edu.catolica.recipe_page.models.User;
 import lombok.Data;
 
 @Data

@@ -1,19 +1,23 @@
 package com.edu.catolica.recipe_page.dto;
 
+import com.edu.catolica.recipe_page.models.Recipe;
 import com.edu.catolica.recipe_page.models.User;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
-public class UserResponseDTO {
+public class UserRecipeResponseDTO {
     private String id;
     private String name;
     private String email;
-    private String password;
+    private List<RecipeResponseDTO> recipes;
 
-    public UserResponseDTO(User user) {
+    public UserRecipeResponseDTO(User user, List<RecipeResponseDTO> recipes) {
         this.id = user.getId();
         this.name = user.getName();
         this.email = user.getEmail();
-        this.password = user.getPassword();
+        this.recipes = recipes;
     }
+
 }
