@@ -1,6 +1,6 @@
 package com.edu.catolica.recipe_page.dto;
 
-import com.edu.catolica.recipe_page.enums.RecipeCategory;
+import com.edu.catolica.recipe_page.models.Category;
 import lombok.Data;
 
 import java.util.List;
@@ -12,5 +12,5 @@ public class RecipeRequestDTO {
     private String preparationMethod;
     private String authorId;
     private Integer preparationTime;
-    private List<RecipeCategory> categories;
+    private List<String> categories;
 }

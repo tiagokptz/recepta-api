@@ -1,6 +1,5 @@
 package com.edu.catolica.recipe_page.models;
 
-import com.edu.catolica.recipe_page.enums.RecipeCategory;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -18,5 +17,5 @@ public class Recipe {
     private String preparationMethod;
     private String authorId;
     private Integer preparationTime;
-    private List<RecipeCategory> categories;
+    private List<String> categories;
 }

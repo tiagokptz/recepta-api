@@ -8,13 +8,11 @@ import java.util.List;
 
 @Data
 public class UserRecipeResponseDTO {
-    private String id;
     private String name;
     private String email;
     private List<RecipeResponseDTO> recipes;
 
     public UserRecipeResponseDTO(User user, List<RecipeResponseDTO> recipes) {
-        this.id = user.getId();
         this.name = user.getName();
         this.email = user.getEmail();
         this.recipes = recipes;
