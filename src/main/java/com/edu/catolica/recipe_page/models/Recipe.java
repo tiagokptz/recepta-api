@@ -17,5 +17,6 @@ public class Recipe {
     private String ingredients;
     private String preparationMethod;
     private String authorId;
+    private Integer preparationTime;
     private List<RecipeCategory> categories;
 }

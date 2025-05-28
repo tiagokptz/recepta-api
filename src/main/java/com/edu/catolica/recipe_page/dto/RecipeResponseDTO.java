@@ -12,6 +12,7 @@ public class RecipeResponseDTO {
     private String ingredients;
     private String preparationMethod;
     private String authorId;
+    private Integer preparationTime;
     private List<RecipeCategory> categories;
 
     public RecipeResponseDTO(Recipe recipe) {
@@ -19,6 +20,7 @@ public class RecipeResponseDTO {
         this.ingredients = recipe.getIngredients();
         this.preparationMethod = recipe.getPreparationMethod();
         this.authorId = recipe.getAuthorId();
+        this.preparationTime = recipe.getPreparationTime();
         this.categories = recipe.getCategories();
     }
 }
