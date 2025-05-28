@@ -12,7 +12,7 @@ public class RecipeResponseDTO {
     private String ingredients;
     private String preparationMethod;
     private String authorId;
-    private Integer preparationTime;
+    private String preparationTime;
     private List<String> categories;
 
     public RecipeResponseDTO(Recipe recipe) {
