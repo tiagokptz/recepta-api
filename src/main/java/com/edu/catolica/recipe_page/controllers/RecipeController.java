@@ -1,8 +1,8 @@
 package com.edu.catolica.recipe_page.controllers;
 
-import com.edu.catolica.recipe_page.dto.RecipeRequestDTO;
-import com.edu.catolica.recipe_page.dto.RecipeResponseDTO;
-import com.edu.catolica.recipe_page.dto.UserRecipeResponseDTO;
+import com.edu.catolica.recipe_page.dto.recipes.RecipeRequestDTO;
+import com.edu.catolica.recipe_page.dto.recipes.RecipeResponseDTO;
+import com.edu.catolica.recipe_page.dto.user.UserRecipeResponseDTO;
 import com.edu.catolica.recipe_page.exceptions.NotFoundException;
 import com.edu.catolica.recipe_page.models.Recipe;
 import com.edu.catolica.recipe_page.services.RecipeService;
@@ -12,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("recipes")
@@ -41,8 +40,18 @@ public class RecipeController {
             recipeService.delete(recipeId);
             return ResponseEntity.ok().build();
 
-        } catch (NotFoundException e) {
-            System.out.println(e.getMessage());
+        } catch(NotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateRecipe(@PathVariable("id") String recipeId, @RequestBody RecipeRequestDTO recipeRequestDTO) {
+        try {
+            recipeService.update(recipeId, recipeRequestDTO);
+            return ResponseEntity.ok().build();
+
+        } catch(Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
     }

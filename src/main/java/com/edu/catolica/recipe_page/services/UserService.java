@@ -1,6 +1,6 @@
 package com.edu.catolica.recipe_page.services;
 
-import com.edu.catolica.recipe_page.dto.UserRequestDTO;
+import com.edu.catolica.recipe_page.dto.user.UserRequestDTO;
 import com.edu.catolica.recipe_page.models.User;
 import com.edu.catolica.recipe_page.repositories.UserRepository;
 import com.edu.catolica.recipe_page.security.Encoder;

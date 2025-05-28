@@ -1,4 +1,4 @@
-package com.edu.catolica.recipe_page.dto;
+package com.edu.catolica.recipe_page.dto.login;
 
 import lombok.Data;
 

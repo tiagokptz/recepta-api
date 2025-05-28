@@ -1,6 +1,5 @@
-package com.edu.catolica.recipe_page.dto;
+package com.edu.catolica.recipe_page.dto.recipes;
 
-import com.edu.catolica.recipe_page.models.Category;
 import lombok.Data;
 
 import java.util.List;

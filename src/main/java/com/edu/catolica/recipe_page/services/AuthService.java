@@ -1,6 +1,6 @@
 package com.edu.catolica.recipe_page.services;
 
-import com.edu.catolica.recipe_page.dto.LoginRequestDTO;
+import com.edu.catolica.recipe_page.dto.login.LoginRequestDTO;
 import com.edu.catolica.recipe_page.exceptions.CredentialsInvalidException;
 import com.edu.catolica.recipe_page.models.User;
 import com.edu.catolica.recipe_page.repositories.UserRepository;

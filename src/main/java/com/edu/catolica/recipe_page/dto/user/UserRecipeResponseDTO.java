@@ -1,6 +1,6 @@
-package com.edu.catolica.recipe_page.dto;
+package com.edu.catolica.recipe_page.dto.user;
 
-import com.edu.catolica.recipe_page.models.Recipe;
+import com.edu.catolica.recipe_page.dto.recipes.RecipeResponseDTO;
 import com.edu.catolica.recipe_page.models.User;
 import lombok.Data;
 

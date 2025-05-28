@@ -1,9 +1,9 @@
 package com.edu.catolica.recipe_page.controllers;
 
-import com.edu.catolica.recipe_page.dto.LoginRequestDTO;
-import com.edu.catolica.recipe_page.dto.LoginResponseDTO;
-import com.edu.catolica.recipe_page.dto.UserRequestDTO;
-import com.edu.catolica.recipe_page.dto.UserResponseDTO;
+import com.edu.catolica.recipe_page.dto.login.LoginRequestDTO;
+import com.edu.catolica.recipe_page.dto.login.LoginResponseDTO;
+import com.edu.catolica.recipe_page.dto.user.UserRequestDTO;
+import com.edu.catolica.recipe_page.dto.user.UserResponseDTO;
 import com.edu.catolica.recipe_page.exceptions.CredentialsInvalidException;
 import com.edu.catolica.recipe_page.models.User;
 import com.edu.catolica.recipe_page.services.AuthService;
