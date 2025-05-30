@@ -1,16 +1,22 @@
 package com.edu.catolica.recipe_page.services;
 
+import com.edu.catolica.recipe_page.dto.FilterResponseDTO;
 import com.edu.catolica.recipe_page.dto.recipes.RecipeRequestDTO;
 import com.edu.catolica.recipe_page.dto.recipes.RecipeResponseDTO;
-import com.edu.catolica.recipe_page.dto.user.UserRecipeResponseDTO;
+import com.edu.catolica.recipe_page.dto.UserRecipeResponseDTO;
 import com.edu.catolica.recipe_page.exceptions.NotFoundException;
 import com.edu.catolica.recipe_page.models.Recipe;
+import com.edu.catolica.recipe_page.models.User;
 import com.edu.catolica.recipe_page.repositories.RecipeRepository;
 import com.edu.catolica.recipe_page.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.logging.Filter;
 import java.util.stream.Collectors;
 
 @Service
@@ -76,10 +82,14 @@ public class RecipeService {
                     .collect(Collectors.toList());
     }
 
-    public List<RecipeResponseDTO> findByCategories(List<String> categories) {
+    public List<FilterResponseDTO> findByCategories(List<String> categories) {
         return recipeRepo.findByCategoriesIn(categories)
                 .stream()
-                .map(RecipeResponseDTO :: new)
+                .map(recipe -> {
+                    return userRepo.findById(recipe.getAuthorId())
+                            .map(user -> new FilterResponseDTO(user, recipe)).orElse(null);
+                })
+                .filter(Objects::nonNull)
                 .collect(Collectors.toList());
     }
 }

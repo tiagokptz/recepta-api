@@ -1,8 +1,9 @@
 package com.edu.catolica.recipe_page.controllers;
 
+import com.edu.catolica.recipe_page.dto.FilterResponseDTO;
 import com.edu.catolica.recipe_page.dto.recipes.RecipeRequestDTO;
 import com.edu.catolica.recipe_page.dto.recipes.RecipeResponseDTO;
-import com.edu.catolica.recipe_page.dto.user.UserRecipeResponseDTO;
+import com.edu.catolica.recipe_page.dto.UserRecipeResponseDTO;
 import com.edu.catolica.recipe_page.exceptions.NotFoundException;
 import com.edu.catolica.recipe_page.models.Recipe;
 import com.edu.catolica.recipe_page.services.RecipeService;
@@ -56,10 +57,9 @@ public class RecipeController {
         }
     }
 
-    //vou deixar o endpoint assim por enquanto
     @GetMapping("/filter")
-    public ResponseEntity<?> filterRecipeByCategory(@RequestParam List<String> categories) {
-        List<RecipeResponseDTO> response = recipeService.findByCategories(categories);
+    public ResponseEntity<?> filterRecipeByCategory(@RequestParam(required = false) List<String> categories) {
+        List<FilterResponseDTO> response = recipeService.findByCategories(categories);
 
         return ResponseEntity.ok(response);
     }

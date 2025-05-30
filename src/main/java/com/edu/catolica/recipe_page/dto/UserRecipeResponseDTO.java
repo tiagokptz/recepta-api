@@ -1,4 +1,4 @@
-package com.edu.catolica.recipe_page.dto.user;
+package com.edu.catolica.recipe_page.dto;
 
 import com.edu.catolica.recipe_page.dto.recipes.RecipeResponseDTO;
 import com.edu.catolica.recipe_page.models.User;
