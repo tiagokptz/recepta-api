@@ -22,6 +22,7 @@ public class RecipeService {
     @Autowired
     private UserRepository userRepo;
 
+    //posso retornar somente RecipeResponseDTO
     public Recipe save(RecipeRequestDTO dto) {
         Recipe recipe = new Recipe();
         recipe.setRecipeName(dto.getRecipeName());
@@ -73,5 +74,19 @@ public class RecipeService {
                 .stream()
                 .map(RecipeResponseDTO :: new)
                     .collect(Collectors.toList());
+    }
+
+    public List<RecipeResponseDTO> findByCategories(List<String> categories) {
+        return recipeRepo.findByCategoriesIn(categories)
+                .stream()
+                .map(RecipeResponseDTO :: new)
+                .collect(Collectors.toList());
+    }
+
+    public List<RecipeResponseDTO> findByName(String name) {
+        return recipeRepo.findByRecipeNameContainingIgnoreCase(name)
+                .stream()
+                .map(RecipeResponseDTO :: new)
+                .collect(Collectors.toList());
     }
 }
