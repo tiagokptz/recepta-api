@@ -34,7 +34,7 @@ public class RecipeService {
         return recipeRepo.save(recipe);
     }
 
-    public List<UserRecipeResponseDTO> listUserTheirRecipes() {
+    public List<UserRecipeResponseDTO> listUsersTheirRecipes() {
         return userRepo.findAll().stream().map(user -> {
             List<RecipeResponseDTO> recipes = recipeRepo.findByAuthorId(user.getId())
                     .stream()
@@ -66,5 +66,12 @@ public class RecipeService {
         recipe.setCategories(dto.getCategories());
 
         recipeRepo.save(recipe);
+    }
+
+    public List<RecipeResponseDTO> listRecipesByUserId(String id) {
+        return recipeRepo.findByAuthorId(id)
+                .stream()
+                .map(RecipeResponseDTO :: new)
+                    .collect(Collectors.toList());
     }
 }

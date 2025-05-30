@@ -29,7 +29,7 @@ public class RecipeController {
 
     @GetMapping
     public ResponseEntity<?> listUserWithTheirRecipes() {
-        List<UserRecipeResponseDTO> response = recipeService.listUserTheirRecipes();
+        List<UserRecipeResponseDTO> response = recipeService.listUsersTheirRecipes();
 
         return ResponseEntity.ok(response);
     }
