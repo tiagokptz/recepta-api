@@ -82,11 +82,4 @@ public class RecipeService {
                 .map(RecipeResponseDTO :: new)
                 .collect(Collectors.toList());
     }
-
-    public List<RecipeResponseDTO> findByName(String name) {
-        return recipeRepo.findByRecipeNameContainingIgnoreCase(name)
-                .stream()
-                .map(RecipeResponseDTO :: new)
-                .collect(Collectors.toList());
-    }
 }

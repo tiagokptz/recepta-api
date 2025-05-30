@@ -57,16 +57,9 @@ public class RecipeController {
     }
 
     //vou deixar o endpoint assim por enquanto
-    @GetMapping("/search/categories")
-    public ResponseEntity<?> findRecipeByCategory(@RequestParam List<String> categories) {
+    @GetMapping("/filter")
+    public ResponseEntity<?> filterRecipeByCategory(@RequestParam List<String> categories) {
         List<RecipeResponseDTO> response = recipeService.findByCategories(categories);
-
-        return ResponseEntity.ok(response);
-    }
-
-    @GetMapping("/search/name")
-    public ResponseEntity<?> findRecipeByName(@RequestParam String name) {
-        List<RecipeResponseDTO> response = recipeService.findByName(name);
 
         return ResponseEntity.ok(response);
     }
