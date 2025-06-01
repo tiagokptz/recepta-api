@@ -58,8 +58,8 @@ public class RecipeController {
     }
 
     @GetMapping("/filter")
-    public ResponseEntity<?> filterRecipeByCategory(@RequestParam(required = false) List<String> categories) {
-        List<FilterResponseDTO> response = recipeService.findByCategories(categories);
+    public ResponseEntity<?> filterRecipeByCategory(@RequestParam(required = false) String category) {
+        List<FilterResponseDTO> response = recipeService.findByCategories(category);
 
         return ResponseEntity.ok(response);
     }

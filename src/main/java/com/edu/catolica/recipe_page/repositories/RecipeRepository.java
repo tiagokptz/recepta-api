@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface RecipeRepository extends MongoRepository<Recipe, String> {
     List<Recipe> findByAuthorId(String id);
-    List<Recipe> findByCategoriesIn(List<String> categories);
+    List<Recipe> findByCategories(String category);
 }

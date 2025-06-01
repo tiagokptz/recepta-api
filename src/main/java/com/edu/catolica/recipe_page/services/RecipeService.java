@@ -82,8 +82,8 @@ public class RecipeService {
                     .collect(Collectors.toList());
     }
 
-    public List<FilterResponseDTO> findByCategories(List<String> categories) {
-        return recipeRepo.findByCategoriesIn(categories)
+    public List<FilterResponseDTO> findByCategories(String category) {
+        return recipeRepo.findByCategories(category)
                 .stream()
                 .map(recipe -> {
                     return userRepo.findById(recipe.getAuthorId())
@@ -91,5 +91,14 @@ public class RecipeService {
                 })
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
+
+        /*return recipeRepo.findByCategories(categories)
+                .stream()
+                .map(recipe -> {
+                    return userRepo.findById(recipe.getAuthorId())
+                            .map(user -> new FilterResponseDTO(user, recipe)).orElse(null);
+                })
+                .filter(Objects::nonNull)
+                .collect(Collectors.toList());*/
     }
 }
