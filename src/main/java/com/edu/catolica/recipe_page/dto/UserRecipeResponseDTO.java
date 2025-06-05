@@ -10,12 +10,12 @@ import java.util.List;
 public class UserRecipeResponseDTO {
     private String name;
     private String email;
-    private List<RecipeResponseDTO> recipes;
+    private RecipeResponseDTO recipe;
 
-    public UserRecipeResponseDTO(User user, List<RecipeResponseDTO> recipes) {
+    public UserRecipeResponseDTO(User user, RecipeResponseDTO recipe) {
         this.name = user.getName();
         this.email = user.getEmail();
-        this.recipes = recipes;
+        this.recipe = recipe;
     }
 
 }

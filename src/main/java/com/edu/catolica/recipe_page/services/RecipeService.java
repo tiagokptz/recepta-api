@@ -42,14 +42,20 @@ public class RecipeService {
     }
 
     public List<UserRecipeResponseDTO> listUsersTheirRecipes() {
-        return userRepo.findAll().stream().map(user -> {
+        /*return userRepo.findAll().stream().map(user -> {
             List<RecipeResponseDTO> recipes = recipeRepo.findByAuthorId(user.getId())
                     .stream()
                     .map(RecipeResponseDTO::new)
                     .collect(Collectors.toList());
 
             return new UserRecipeResponseDTO(user, recipes);
-        }).collect(Collectors.toList());
+        }).collect(Collectors.toList());*/
+
+        return userRepo.findAll().stream()
+                .flatMap(user -> recipeRepo.findByAuthorId(user.getId())
+                        .stream()
+                        .map(recipe -> new UserRecipeResponseDTO(user, new RecipeResponseDTO(recipe)))
+                ).collect(Collectors.toList());
     }
 
     public void delete(String id) throws NotFoundException {
@@ -91,14 +97,5 @@ public class RecipeService {
                 })
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
-
-        /*return recipeRepo.findByCategories(categories)
-                .stream()
-                .map(recipe -> {
-                    return userRepo.findById(recipe.getAuthorId())
-                            .map(user -> new FilterResponseDTO(user, recipe)).orElse(null);
-                })
-                .filter(Objects::nonNull)
-                .collect(Collectors.toList());*/
     }
 }
