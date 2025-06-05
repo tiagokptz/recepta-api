@@ -4,4 +4,4 @@ spring:
       uri: mongodb://localhost:27017
       database: recipesdb
   application:
-    name: ReceptaAPI  
+    name: ReceptaAPI
