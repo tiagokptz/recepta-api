@@ -15,13 +15,8 @@ public class UserService {
     @Autowired
     private UserRepository userRepo;
 
-    //posso lançar um erro aqui
     public Boolean findByEmail(String email) {
-        if(userRepo.findByEmail(email).isEmpty()) {
-            return false;
-        }
-
-        return true;
+        return userRepo.findByEmail(email).isPresent();
     }
 
     public User save(UserRequestDTO dto) {

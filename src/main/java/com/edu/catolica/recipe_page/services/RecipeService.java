@@ -28,7 +28,6 @@ public class RecipeService {
     @Autowired
     private UserRepository userRepo;
 
-    //posso retornar somente RecipeResponseDTO
     public Recipe save(RecipeRequestDTO dto) {
         Recipe recipe = new Recipe();
         recipe.setRecipeName(dto.getRecipeName());
@@ -42,15 +41,6 @@ public class RecipeService {
     }
 
     public List<UserRecipeResponseDTO> listUsersTheirRecipes() {
-        /*return userRepo.findAll().stream().map(user -> {
-            List<RecipeResponseDTO> recipes = recipeRepo.findByAuthorId(user.getId())
-                    .stream()
-                    .map(RecipeResponseDTO::new)
-                    .collect(Collectors.toList());
-
-            return new UserRecipeResponseDTO(user, recipes);
-        }).collect(Collectors.toList());*/
-
         return userRepo.findAll().stream()
                 .flatMap(user -> recipeRepo.findByAuthorId(user.getId())
                         .stream()
